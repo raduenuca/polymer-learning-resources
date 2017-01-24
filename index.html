@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+        <title>polymer-learning-resources</title>
+        <meta name="description" content="polymer-learning-resources description">
+
+        <!-- See https://goo.gl/OOhYW5 -->
+        <link rel="manifest" href="/manifest.json">
+
+        <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+        <link rel="import" href="bower_components/iron-ajax/iron-ajax.html">
+        <link rel="import" href="src/polymer-learning-resources-app.html">
+        <link rel="import" href="src/test-app.html">
+
+        <style>
+
+            body {
+                margin: 0;
+                font-family: 'Roboto', 'Noto', sans-serif;
+            }
+
+        </style>
+    </head>
+    <body unresolved>
+
+        <template is="dom-bind">
+
+            <iron-ajax url="data/items.json" auto last-response="{{items}}"></iron-ajax>
+            <iron-ajax url="data/featured.json" auto last-response="{{featuredItems}}"></iron-ajax>
+            <!--<polymer-learning-resources-app items="[[items]]" featured-items="[[featuredItems]]"></polymer-learning-resources-app>-->
+            <test-app items="[[items]]" featured-items="[[featuredItems]]"></test-app>
+
+        </template>
+
+    </body>
+</html>
