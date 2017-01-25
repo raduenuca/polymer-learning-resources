@@ -12,7 +12,7 @@
 <link rel="import" href="resource-list.html">
 <link rel="import" href="resource-detail.html">
 
-<dom-module id="polymer-learning-resources-app">
+<dom-module id="test-app">
     <template>
         <style>
 
@@ -34,6 +34,7 @@
             }
 
             app-drawer {
+                top: 50px;
                 --app-drawer-content-container: {
                     background-color: #f3f3f3;
                 };
@@ -201,56 +202,45 @@
 
         <iron-media-query query="max-width: 400px" query-matches="{{smallScreen}}"></iron-media-query>
 
-        <app-drawer-layout drawer-width="288px" force-narrow>
-            <!-- navigation drawer for small screen sizes -->
-            <app-drawer id="drawer" swipe-open>
-                <template is="dom-if" if="[[smallScreen]]">
-                    <app-toolbar class="profileBar">
-                        <img class="profilePic" src="//app-layout-assets.appspot.com/assets/shrine/profile_pic.jpg"
-                             width="30" height="30">
-                        <div class="profileName">Stella</div>
-                        <paper-icon-button icon="settings" aria-label="Settings"></paper-icon-button>
-                    </app-toolbar>
-                    <div class="list">
-                        <template is="dom-repeat" items="[[sections]]" as="section" initial-count="1">
-                            <a href="#[[section]]" class$="[[_getSectionClass(index, selectedTab)]]">[[section]]</a>
-                        </template>
+        <app-header-layout fullbleed>
+            <app-header id="header" effects="waterfall" fixed shadow condenses="[[!smallScreen]]">
+                <app-toolbar id="mainToolbar">
+                    <div class="navItem leftItem">
+                        <a href="#[[sectionData.section]]" tabindex="-1">
+                            <paper-icon-button icon="arrow-back" alt="Back to the home"></paper-icon-button>
+                        </a>
                     </div>
+                    <div class="spacer">
+                        <img src="//app-layout-assets.appspot.com/assets/shrine/shrine_logo.svg" class="logo"
+                             alt="SHRINE">
+                    </div>
+                    <div class="navItem">
+                        <paper-icon-button icon="shopping-cart" aria-label="Shopping cart"></paper-icon-button>
+                        <paper-icon-button icon="more-vert" aria-label="More options"></paper-icon-button>
+                    </div>
+                </app-toolbar>
+                <template is="dom-if" if="[[_shouldShowTabs(onDetailPage, smallScreen)]]">
+                    <paper-tabs selected="[[selectedTab]]" scrollable
+                                sticky$="[[_shouldShowTabs(onDetailPage, smallScreen)]]">
+                        <template is="dom-repeat" items="[[sections]]" as="section">
+                            <paper-tab>
+                                <a href="#[[section]]">[[section]]</a>
+                            </paper-tab>
+                        </template>
+                    </paper-tabs>
                 </template>
-            </app-drawer>
+            </app-header>
 
-            <app-header-layout>
-                <!-- main header -->
-                <app-header id="header" effects="waterfall" fixed="[[smallScreen]]" condenses="[[!smallScreen]]"
-                            reveals="[[!smallScreen]]">
-                    <app-toolbar id="mainToolbar">
-                        <div class="navItem leftItem">
-                            <paper-icon-button icon="menu" drawer-toggle
-                                               alt="Toogle navigation menu"></paper-icon-button>
-                            <a href="#[[sectionData.section]]" tabindex="-1">
-                                <paper-icon-button icon="arrow-back" alt="Back to the home"></paper-icon-button>
-                            </a>
-                        </div>
-                        <div class="spacer">
-                            <img src="//app-layout-assets.appspot.com/assets/shrine/shrine_logo.svg" class="logo"
-                                 alt="SHRINE">
-                        </div>
-                        <div class="navItem">
-                            <paper-icon-button icon="shopping-cart" aria-label="Shopping cart"></paper-icon-button>
-                            <paper-icon-button icon="more-vert" aria-label="More options"></paper-icon-button>
-                        </div>
-                    </app-toolbar>
-                    <template is="dom-if" if="[[_shouldShowTabs(onDetailPage, smallScreen)]]">
-                        <paper-tabs selected="[[selectedTab]]" scrollable
-                                    sticky$="[[_shouldShowTabs(onDetailPage, smallScreen)]]">
-                            <template is="dom-repeat" items="[[sections]]" as="section">
-                                <paper-tab>
-                                    <a href="#[[section]]">[[section]]</a>
-                                </paper-tab>
+            <app-drawer-layout drawer-width="288px">
+                <template is="dom-if" if="[[_equal(route.path, 'official')]]">
+                    <app-drawer id="drawer" swipe-open>
+                        <div class="list">
+                            <template is="dom-repeat" items="[[sections]]" as="section" initial-count="1">
+                                <a href="#[[section]]" class$="[[_getSectionClass(index, selectedTab)]]">[[section]]</a>
                             </template>
-                        </paper-tabs>
-                    </template>
-                </app-header>
+                        </div>
+                    </app-drawer>
+                </template>
                 <iron-pages selected="[[page]]" attr-for-selected="name">
                     <!-- detail of item -->
                     <template is="dom-if" if="[[_equal(page, 'detail')]]">
@@ -271,16 +261,14 @@
                         </resource-list>
                     </template>
                 </iron-pages>
-            </app-header-layout>
+            </app-drawer-layout>
+        </app-header-layout>
 
-        </app-drawer-layout>
     </template>
-
     <script>
         Polymer({
 
-            is: 'polymer-learning-resources-app',
-
+            is: 'test-app',
             properties: {
 
                 sections: {
@@ -366,7 +354,9 @@
                 // TODO(blasten) Polymer.AppScrollEffects(0);
                 this.$.header._scrollTop = 0;
                 this.$.header.resetLayout();
-                this.$.drawer.close();
+                if (this.smallScreen) {
+                    this.$.drawer.close();
+                }
             },
 
             _equal: function (a, b) {
@@ -378,7 +368,7 @@
             },
 
             _shouldShowTabs: function (onDetailPage, smallScreen) {
-                return !onDetailPage && !smallScreen;
+                return true; //!onDetailPage && !smallScreen;
             }
 
         });
