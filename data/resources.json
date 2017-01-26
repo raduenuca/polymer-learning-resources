@@ -1,0 +1,57 @@
+[{
+  "title": "The Polymer Summit 2015",
+  "description": "First ever Polymer Summit",
+  "url": "https://www.youtube.com/playlist?list=PLNYkxOF6rcICdISJclfQhj2S8QZGjXV8J",
+  "imageUrl": "https://www.polymer-project.org/summit-2015/images/badge_blue_small@2x.png",
+  "rating": "5",
+  "categories": ["conference"]
+},{
+  "title": "The Polymer Summit 2015 Code Labs",
+  "description": "Google codelabs provide guided, tutorial, hands-on coding experiences",
+  "url": "https://codelabs.developers.google.com/polymer-summit",
+  "imageUrl": "https://www.polymer-project.org/summit-2015/images/badge_blue_small@2x.png",
+  "rating": "5",
+  "categories": ["hands-on"]
+},{
+  "title": "The Polymer Summit 2016 Code Labs",
+  "description": "Google codelabs provide guided, tutorial, hands-on coding experiences",
+  "url": "https://codelabs.developers.google.com/polymer-summit-2016",
+  "imageUrl": "https://codelabs.developers.google.com/views/polymer-summit-2016/polymer_16_logo.png",
+  "rating": "5",
+  "categories": ["hands-on"]
+},{
+  "title": "The Polymer Summit 2016",
+  "description": "",
+  "url": "https://www.youtube.com/playlist?list=PLNYkxOF6rcICc687SxHQRuo9TVNOJelSZ",
+  "imageUrl": "https://codelabs.developers.google.com/views/polymer-summit-2016/polymer_16_logo.png",
+  "rating": "5",
+  "categories": ["conference"]
+},{
+  "title": "Polymer and Progressive Web Apps: Building on the modern web",
+  "description": "",
+  "url": "https://www.youtube.com/watch?v=fFF2Yup2dMM&index=85&list=PLOU2XLYxmsILe6_eGvDN3GyiodoV3qNSC",
+  "imageUrl": "http://imgs.abduzeedo.com/files/francois/weeklyroundup/052216/google-io-2016-topic_2.png",
+  "rating": "5",
+  "categories": ["conference"]
+},{
+  "title": "Progressive, Performant, Polymer: Pick Three",
+  "description": "",
+  "url": "https://www.youtube.com/watch?v=J4i0xJnQUzU&index=96&list=PLOU2XLYxmsILe6_eGvDN3GyiodoV3qNSC",
+  "imageUrl": "http://imgs.abduzeedo.com/files/francois/weeklyroundup/052216/google-io-2016-topic_2.png",
+  "rating": "5",
+  "categories": ["conference"]
+},{
+  "title": "Learn and Build using Polymer",
+  "description": "",
+  "url": "https://www.udemy.com/learn-and-build-using-polymer/",
+  "imageUrl": "http://www.gfxmag.com/wp-content/uploads/2016/08/udemy-vector-logo.png",
+  "rating": "1",
+  "categories": ["course"]
+},{
+  "title": "Getting Started with Polymer",
+  "description": "",
+  "url": "https://www.amazon.com/Getting-Started-Polymer-Arshak-Khachatrian/dp/1785889370",
+  "imageUrl": "https://www.packtpub.com/sites/default/files/9370OS_4974_Getting%20Started%20with%20Polymer.jpg",
+  "rating": "2",
+  "categories": ["book"]
+}]

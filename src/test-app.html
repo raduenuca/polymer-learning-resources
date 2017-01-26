@@ -36,12 +36,12 @@
                 border-bottom: 1px solid #ddd;
             }
 
-            app-drawer {
-                top: 50px;
-                --app-drawer-content-container: {
-                    background-color: #f3f3f3;
-                };
-            }
+            /*app-drawer {*/
+                /*top: 50px;*/
+                /*--app-drawer-content-container: {*/
+                    /*background-color: #f3f3f3;*/
+                /*};*/
+            /*}*/
 
             #mainToolbar {
                 height: 110px;
@@ -50,6 +50,13 @@
             paper-icon-button {
                 color: #000;
                 --paper-icon-button-ink-color: #31f0ef;
+            }
+
+            span[main-title] {
+                /*padding-bottom: 40px;*/
+                font-size: 60px;
+                font-weight: 800;
+                color: #444;
             }
 
             .navItem {
@@ -65,8 +72,8 @@
             }
 
             .logo {
-                width: 120px;
-                height: 40px;
+                width: 100px;
+                height: 60px;
                 background-size: 100% 100%;
             }
 
@@ -78,21 +85,21 @@
                 height: calc(100vh - 65px);
             }
 
-            :host([page=detail]) #mainToolbar {
-                height: 64px;
-            }
+            /*:host([page=detail]) #mainToolbar {*/
+                /*height: 64px;*/
+            /*}*/
 
-            :host([page=detail]) paper-tabs {
-                display: none;
-            }
+            /*:host([page=detail]) paper-tabs {*/
+                /*display: none;*/
+            /*}*/
 
-            :host([page=detail]) .leftItem [icon=arrow-back] {
-                display: block;
-            }
+            /*:host([page=detail]) .leftItem [icon=arrow-back] {*/
+                /*display: block;*/
+            /*}*/
 
-            :host([page=detail]) .leftItem [icon=menu] {
-                display: none;
-            }
+            /*:host([page=detail]) .leftItem [icon=menu] {*/
+                /*display: none;*/
+            /*}*/
 
             paper-tabs {
                 --paper-tabs-selection-bar-color: #31f0ef;
@@ -163,8 +170,8 @@
              */
             @media (max-width: 1200px) {
                 .logo {
-                    width: 89px;
-                    height: 17px;
+                    width: 69px;
+                    height: 37px;
                 }
 
                 #mainToolbar {
@@ -174,12 +181,21 @@
                 resource-detail {
                     height: auto;
                 }
+
+                span[main-title] {
+                    font-size: 25px;
+                }
             }
 
             /**
              * Phone
              */
             @media (max-width: 400px) {
+                span[main-title] {
+                    font-size: 20px;
+                    white-space: pre-wrap;
+                }
+
                 .leftItem [icon=menu] {
                     display: block;
                 }
@@ -210,18 +226,15 @@
         <app-header-layout fullbleed>
             <app-header id="header" effects="waterfall" fixed shadow condenses="[[!smallScreen]]">
                 <app-toolbar id="mainToolbar">
-                    <div class="navItem leftItem">
-                        <!--<a href="#[[sectionData.section]]" tabindex="-1">-->
-                        <!--<paper-icon-button icon="arrow-back" alt="Back to the home"></paper-icon-button>-->
-                        <!--</a>-->
-                    </div>
                     <div class="spacer">
-                        <img src="//app-layout-assets.appspot.com/assets/shrine/shrine_logo.svg" class="logo"
-                             alt="SHRINE">
+                        <img src="http://www.programwitherik.com/content/images/2015/03/p-logo.svg"
+                             class="logo"
+                             alt="Polymer">
+                        <span main-title>Polymer Learning Resources</span>
                     </div>
                 </app-toolbar>
 
-                <paper-tabs selected="{{routeData.view}}" attr-for-selected="name" scrollable sticky$>
+                <paper-tabs selected="{{routeData.view}}" attr-for-selected="name" scrollable sticky>
                     <paper-tab name="">
                         <span>home</span>
                     </paper-tab>
