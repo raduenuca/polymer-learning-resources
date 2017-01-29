@@ -1,7 +1,4 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="resource-item.html">
-
-<dom-module id="resource-list">
+<html><head><meta charset="UTF-8"><link rel="import" href="polymer-learning-resources-app.html"></head><body><dom-module id="resource-list">
 
     <template>
 
@@ -82,28 +79,7 @@
 
     </template>
 
-    <script>
-
-        Polymer({
-
-            is: 'resource-list',
-
-            properties: {
-                resources: {
-                    type: Array
-                },
-
-                category: {
-                    type: String
-                }
-            },
-
-            _sortByRating: function (resourceA, resourceB) {
-                return resourceB.rating - resourceA.rating;
-            }
-
-        });
-
-    </script>
+    <script>Polymer({is:"resource-list",properties:{resources:{type:Array},category:{type:String}},_sortByRating:function(r,t){return t.rating-r.rating}});</script>
 
 </dom-module>
+</body></html>

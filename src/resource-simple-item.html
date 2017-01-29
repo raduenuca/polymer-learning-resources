@@ -1,6 +1,4 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-
-<dom-module id="resource-simple-item">
+<html><head><meta charset="UTF-8"><link rel="import" href="polymer-learning-resources-app.html"></head><body><dom-module id="resource-simple-item">
 
   <template>
 
@@ -55,26 +53,11 @@
     </style>
 
     <div class="pic" style$="background-image: url([[resource.imageUrl]]);"></div>
-    <!--<div><p>[[resource.title]]</p></div>-->
+    
 
   </template>
 
-  <script>
-
-  Polymer({
-
-    is: 'resource-simple-item',
-
-    properties: {
-
-      resource: {
-        type: Object
-      }
-
-    }
-
-  });
-
-  </script>
+  <script>Polymer({is:"resource-simple-item",properties:{resource:{type:Object}}});</script>
 
 </dom-module>
+</body></html>

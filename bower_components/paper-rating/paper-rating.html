@@ -1,0 +1,36 @@
+<html><head><link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+
+
+</head><body><dom-module id="paper-rating">
+    <template>
+        <style>
+        :host(:hover:not([disabled])) iron-icon:not([active]) {
+            color: var(--paper-rating-active-color, --accent-color);
+        }
+        
+        iron-icon[active] {
+            color: var(--paper-rating-active-color, --accent-color);
+        }
+        
+        iron-icon:not([active]) {
+            color: var(--paper-rating-inactive-color, --disabled-text-color);
+        }
+        
+        :host(:not([disabled])) iron-icon:hover {
+            color: var(--paper-rating-active-color, --accent-color);
+        }
+        
+        :host(:not([disabled])) iron-icon:hover ~ iron-icon {
+            color: var(--paper-rating-inactive-color, --disabled-text-color);
+        }
+        </style>
+        <template is="dom-repeat" items="[[_stars]]">
+            <iron-icon icon="[[icon]]" active$="[[item]]" data-index$="[[index]]" on-tap="_updateRating"></iron-icon>
+        </template>
+    </template>
+    <script>Polymer({is:"paper-rating",properties:{rating:{type:Number,notify:!0},max:{type:Number,value:5},icon:{type:String,value:"star"},disabled:{type:Boolean,value:!1,reflectToAttribute:!0},_stars:{type:Array,computed:"_computeStars(max,rating)"}},_computeStars:function(t,e){for(var a=Array.apply(null,Array(t)).map(Boolean.prototype.valueOf,!1),r=0;r<Math.round(e);r++)a[r]=!0;return a},_updateRating:function(t){this.disabled||(this.rating=Number(t.target.dataset.index)+1)}});</script>
+</dom-module>
+</body></html>

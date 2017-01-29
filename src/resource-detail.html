@@ -1,12 +1,4 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
-<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="../bower_components/paper-rating/paper-rating.html">
-<link rel="import" href="resource-simple-item.html">
-
-<dom-module id="resource-detail">
+<html><head><meta charset="UTF-8"><link rel="import" href="polymer-learning-resources-app.html"></head><body><dom-module id="resource-detail">
 
     <template>
 
@@ -233,10 +225,10 @@
             <div class="detailGrid">
                 <div class="image">
                     <img id="img">
-                    <!--<div class="info">-->
-                        <!--<paper-icon-button icon="info-outline"-->
-                                           <!--aria-label="More information about the resource"></paper-icon-button>-->
-                    <!--</div>-->
+                    
+                        
+                                           
+                    
                 </div>
 
                 <div class="content">
@@ -246,7 +238,7 @@
                             <paper-icon-button icon="launch"></paper-icon-button>
                         </a>
                     </h1>
-                    <p><paper-rating rating="[[resource.rating]]" disabled></paper-rating></p>
+                    <p><paper-rating rating="[[resource.rating]]" disabled=""></paper-rating></p>
                     <p>[[resource.description]]</p>
                     <div class="location">
                         <h3>Disclaimer</h3>
@@ -259,43 +251,7 @@
 
     </template>
 
-    <script>
-
-        Polymer({
-
-            is: 'resource-detail',
-
-            properties: {
-
-                resource: {
-                    type: Object,
-                    observer: '_itemChanged'
-                },
-
-                category: {
-                    type: String
-                },
-
-                relatedResources: {
-                    type: Array
-                }
-
-            },
-
-            _itemChanged: function (resource) {
-                this.$.img.src = '';
-                this.$.img.src = resource.imageUrl;
-            },
-
-            _currentItem: function (item) {
-                return item.slug !== this.resource.slug;
-            },
-
-            _hasRelatedResources: function(relatedResources){
-                return relatedResources.length > 1;
-            }
-        });
-
-    </script>
+    <script>Polymer({is:"resource-detail",properties:{resource:{type:Object,observer:"_itemChanged"},category:{type:String},relatedResources:{type:Array}},_itemChanged:function(e){this.$.img.src="",this.$.img.src=e.imageUrl},_currentItem:function(e){return e.slug!==this.resource.slug},_hasRelatedResources:function(e){return e.length>1}});</script>
 
 </dom-module>
+</body></html>
