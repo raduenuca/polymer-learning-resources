@@ -1,6 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="resource-item.html">
-<link rel="import" href="resource-featured-item.html">
 
 <dom-module id="resource-list">
 
@@ -73,12 +72,10 @@
 
         </style>
 
-        <!--<resource-featured-item item="[[featuredItem]]"></resource-featured-item>-->
-
         <div class="grid">
-            <template is="dom-repeat" items="[[items]]" sort="_sortItems" initial-count="1">
-                <a href="#" class="item" aria-label$="More information about [[item.title]]">
-                    <resource-item item="[[item]]"></resource-item>
+            <template is="dom-repeat" items="[[resources]]" as="resource" sort="_sortByRating" initial-count="1">
+                <a href="/[[category]]/[[resource.slug]]" class="item" aria-label$="More information about [[resource.title]]">
+                    <resource-item resource="[[resource]]"></resource-item>
                 </a>
             </template>
         </div>
@@ -92,22 +89,17 @@
             is: 'resource-list',
 
             properties: {
-
-                items: {
+                resources: {
                     type: Array
                 },
 
-                featuredItem: {
-                    type: Object
-                },
-
-                section: {
+                category: {
                     type: String
                 }
             },
 
-            _sortItems: function () {
-                return Math.round(Math.random() * 3) - 1;
+            _sortByRating: function (resourceA, resourceB) {
+                return resourceB.rating - resourceA.rating;
             }
 
         });

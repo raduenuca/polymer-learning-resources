@@ -1,57 +1,271 @@
 [{
+  "slug": "the-polymer-summit-2015",
   "title": "The Polymer Summit 2015",
   "description": "First ever Polymer Summit",
   "url": "https://www.youtube.com/playlist?list=PLNYkxOF6rcICdISJclfQhj2S8QZGjXV8J",
-  "imageUrl": "https://www.polymer-project.org/summit-2015/images/badge_blue_small@2x.png",
-  "rating": "5",
-  "categories": ["conference"]
+  "imageUrl": "/images/resources/polymer-summit-2015.png",
+  "rating": 5,
+  "categories": ["conferences"],
+  "location": "YouTube",
+  "locationImgUrl": "/images/authors/youtube.png"
 },{
+  "slug": "the-polymer-summit-2015-code-labs",
   "title": "The Polymer Summit 2015 Code Labs",
   "description": "Google codelabs provide guided, tutorial, hands-on coding experiences",
   "url": "https://codelabs.developers.google.com/polymer-summit",
-  "imageUrl": "https://www.polymer-project.org/summit-2015/images/badge_blue_small@2x.png",
-  "rating": "5",
-  "categories": ["hands-on"]
+  "imageUrl": "/images/resources/polymer-summit-2015.png",
+  "rating": 5,
+  "categories": ["hands-on"],
+  "location": "Google Developers",
+  "locationImgUrl": "/images/authors/google-developers.png"
 },{
+  "slug": "the-polymer-summit-2016-code-labs",
   "title": "The Polymer Summit 2016 Code Labs",
   "description": "Google codelabs provide guided, tutorial, hands-on coding experiences",
   "url": "https://codelabs.developers.google.com/polymer-summit-2016",
-  "imageUrl": "https://codelabs.developers.google.com/views/polymer-summit-2016/polymer_16_logo.png",
-  "rating": "5",
-  "categories": ["hands-on"]
+  "imageUrl": "/images/resources/polymer-summit-2016.png",
+  "rating": 4,
+  "categories": ["hands-on"],
+  "location": "Google Developers",
+  "locationImgUrl": "/images/authors/google-developers.png"
 },{
+  "slug": "the-polymer-summit-2016",
   "title": "The Polymer Summit 2016",
   "description": "",
   "url": "https://www.youtube.com/playlist?list=PLNYkxOF6rcICc687SxHQRuo9TVNOJelSZ",
-  "imageUrl": "https://codelabs.developers.google.com/views/polymer-summit-2016/polymer_16_logo.png",
-  "rating": "5",
-  "categories": ["conference"]
+  "imageUrl": "/images/resources/polymer-summit-2016.png",
+  "rating": 5,
+  "categories": ["conferences"],
+  "location": "YouTube",
+  "locationImgUrl": "/images/authors/youtube.png"
 },{
+  "slug": "polymer-and-progressive-web-apps-building-on-the-modern-web",
   "title": "Polymer and Progressive Web Apps: Building on the modern web",
   "description": "",
   "url": "https://www.youtube.com/watch?v=fFF2Yup2dMM&index=85&list=PLOU2XLYxmsILe6_eGvDN3GyiodoV3qNSC",
-  "imageUrl": "http://imgs.abduzeedo.com/files/francois/weeklyroundup/052216/google-io-2016-topic_2.png",
-  "rating": "5",
-  "categories": ["conference"]
+  "imageUrl": "/images/resources/google-io-2016.png",
+  "rating": 5,
+  "categories": ["conferences"],
+  "location": "YouTube",
+  "locationImgUrl": "/images/authors/youtube.png"
 },{
+  "slug": "progressive-performant-polymer-pick-three",
   "title": "Progressive, Performant, Polymer: Pick Three",
   "description": "",
   "url": "https://www.youtube.com/watch?v=J4i0xJnQUzU&index=96&list=PLOU2XLYxmsILe6_eGvDN3GyiodoV3qNSC",
-  "imageUrl": "http://imgs.abduzeedo.com/files/francois/weeklyroundup/052216/google-io-2016-topic_2.png",
-  "rating": "5",
-  "categories": ["conference"]
+  "imageUrl": "/images/resources/google-io-2016.png",
+  "rating": 5,
+  "categories": ["conferences"],
+  "location": "YouTube",
+  "locationImgUrl": "/images/authors/youtube.png"
 },{
+  "slug": "learn-and-build-using-polymer",
   "title": "Learn and Build using Polymer",
   "description": "",
   "url": "https://www.udemy.com/learn-and-build-using-polymer/",
-  "imageUrl": "http://www.gfxmag.com/wp-content/uploads/2016/08/udemy-vector-logo.png",
-  "rating": "1",
-  "categories": ["course"]
+  "imageUrl": "/images/resources/polymer.svg",
+  "rating": 1,
+  "categories": ["courses"],
+  "location": "Udemy",
+  "locationImgUrl": "/images/authors/udemy.png"
 },{
+  "slug": "getting-started-with-polymer",
   "title": "Getting Started with Polymer",
   "description": "",
   "url": "https://www.amazon.com/Getting-Started-Polymer-Arshak-Khachatrian/dp/1785889370",
-  "imageUrl": "https://www.packtpub.com/sites/default/files/9370OS_4974_Getting%20Started%20with%20Polymer.jpg",
-  "rating": "2",
-  "categories": ["book"]
+  "imageUrl": "/images/resources/getting-started-with-polymer.jpg",
+  "rating": 2,
+  "categories": ["books"],
+  "location": "Amazon",
+  "locationImgUrl": "/images/authors/amazon.svg"
+},{
+  "slug": "html-5-web-component-fundamentals",
+  "title": "HTML5 Web Component Fundamentals",
+  "description": "Learn how to use the Shadow DOM, Custom Elements, Templates, and Imports to create reusable web components.",
+  "url": "https://www.pluralsight.com/courses/web-components-shadow-dom",
+  "imageUrl": "/images/resources/webcomponents.png",
+  "rating": 5,
+  "categories": ["courses"],
+  "location": "Pluralsight",
+  "locationImgUrl": "/images/authors/pluralsight.png"
+},{
+  "slug": "polymer-js-and-material-design",
+  "title": "Polymer.js and Material Design",
+  "description": "This course will introduce Polymer’s basic functionality by building together a real-life administration dashboard.",
+  "url": "https://app.pluralsight.com/library/courses/building-web-application-polymer-material-design",
+  "imageUrl": "/images/resources/polymer.svg",
+  "rating": 3,
+  "categories": ["courses"],
+  "location": "Pluralsight",
+  "locationImgUrl": "/images/authors/pluralsight.png"
+},{
+  "slug": "getting-started-with-polymer-js",
+  "title": "Getting Started with Polymer.js",
+  "description": "Google's Polymer.js framework for software development gives extra functionality to Web Components. This course will introduce you to this up-and-coming, element-focused development approach and how you can apply it to your own projects.",
+  "url": "https://app.pluralsight.com/library/courses/polymer-js-getting-started",
+  "imageUrl": "/images/resources/polymer.svg",
+  "rating": 2,
+  "categories": ["courses"],
+  "location": "Pluralsight",
+  "locationImgUrl": "/images/authors/pluralsight.png"
+},{
+  "slug": "working-with-polymer-js-elements",
+  "title": "Working with Polymer.js Elements",
+  "description": "This course will go over the Polymer Element Catalog and show you the necessary tools and actions to create and publish your own custom, reusable element.",
+  "url": "https://app.pluralsight.com/library/courses/polymer-js-elements-working",
+  "imageUrl": "/images/resources/polymer.svg",
+  "rating": 2,
+  "categories": ["courses"],
+  "location": "Pluralsight",
+  "locationImgUrl": "/images/authors/pluralsight.png"
+},{
+  "slug": "polymer-catalog",
+  "title": "Polymer Catalog",
+  "description": "Keep calm and #UseThePlatform",
+  "url": "https://www.webcomponents.org/author/PolymerElements",
+  "imageUrl": "/images/resources/polymer.svg",
+  "rating": 5,
+  "categories": ["documentation"],
+  "location": "Webcomponents.org",
+  "locationImgUrl": "/images/authors/webcomponents.svg"
+},{
+  "slug": "polymer-elements-github-account",
+  "title": "PolymerElements Github account",
+  "description": "",
+  "url": "https://github.com/PolymerElements",
+  "imageUrl": "/images/resources/polymer.svg",
+  "rating": 5,
+  "categories": ["documentation"],
+  "location": "Github",
+  "locationImgUrl": "/images/authors/github.png"
+},{
+  "slug": "polymer-project",
+  "title": "Polymer Project",
+  "description": "The Polymer Project helps you deliver amazing user experiences by unlocking the full potential of the web platform.",
+  "url": "https://www.polymer-project.org/1.0/",
+  "imageUrl": "/images/resources/polymer.svg",
+  "rating": 5,
+  "categories": ["documentation"],
+  "location": "Polymer Project",
+  "locationImgUrl": "/images/authors/www.png"
+},{
+  "slug": "polymer-cheatsheet",
+  "title": "Polymer Cheatsheet",
+  "description": "This is a cheat sheet for the Polymer 1.x library.",
+  "url": "https://meowni.ca/posts/polymer-cheatsheet/",
+  "imageUrl": "/images/resources/polymer.svg",
+  "rating": 5,
+  "categories": ["articles"],
+  "location": "meowni.ca (polymer team member)",
+  "locationImgUrl": "/images/authors/www.png"
+},{
+  "slug": "web-components-introduction",
+  "title": "Web components Introduction",
+  "description": "Introduction to Web components",
+  "url": "https://www.webcomponents.org/introduction",
+  "imageUrl": "/images/resources/webcomponents.png",
+  "rating": 5,
+  "categories": ["articles"],
+  "location": "Webcomponents.org",
+  "locationImgUrl": "/images/authors/webcomponents.svg"
+},{
+  "slug": "polycasts-with-rob-dodson",
+  "title": "Polycasts with Rob Dodson",
+  "description": "Ready to revolutionize the modern web? Join Rob Dodson as he explores the ins and outs of Polymer, a new library that's pushing the boundaries of what's possible in the browser.",
+  "url": "https://www.youtube.com/playlist?list=PLNYkxOF6rcIDdS7HWIC_BYRunV6MHs5xo",
+  "imageUrl": "/images/resources/polymer.svg",
+  "rating": 5,
+  "categories": ["podcasts"],
+  "location": "YouTube",
+  "locationImgUrl": "/images/authors/youtube.png"
+},{
+  "slug": "progressive-web-app-summit-2016",
+  "title": "Progressive Web App Summit 2016",
+  "description": "So what exactly is a progressive web app? Find out here with all the talks and behind the scenes insight from the first ever PWA summit.",
+  "url": "https://www.youtube.com/playlist?list=PLNYkxOF6rcIAWWNR_Q6eLPhsyx6VvYjVb",
+  "imageUrl": "/images/resources/pwa-summit-2016.png",
+  "rating": 0,
+  "categories": ["conferences"],
+  "location": "YouTube",
+  "locationImgUrl": "/images/authors/youtube.png"
+},{
+  "slug": "progressive-web-app-summit-2016-code-labs",
+  "title": "Progressive Web App Summit 2016 Code Labs",
+  "description": "codelabs for the Progressive Web App Dev Summit in Amsterdam on June 20-21, 2016",
+  "url": "https://codelabs.developers.google.com/pwa-dev-summit",
+  "imageUrl": "/images/resources/pwa-summit-2016.png",
+  "rating": 0,
+  "categories": ["hands-on"],
+  "location": "Google Developers",
+  "locationImgUrl": "/images/authors/google-developers.png"
+},{
+  "slug": "creating-custom-web-elements-with-polymer",
+  "title": "Creating Custom Web Elements with Polymer",
+  "description": "This course is an introduction to Polymer, and should get you started building your own customizable web elements that you can use on their own, or even with your favorite framework like Angular or React!",
+  "url": "https://egghead.io/courses/creating-custom-web-elements-with-polymer",
+  "imageUrl": "/images/resources/polymer.svg",
+  "rating": 0,
+  "categories": ["courses"],
+  "location": "egghead.io",
+  "locationImgUrl": "/images/authors/egghead.svg"
+},{
+  "slug": "level-up-tuts-polymer-1-0-tutorials",
+  "title": "LevelUpTuts Polymer 1.0 Tutorials",
+  "description": "",
+  "url": "https://www.youtube.com/playlist?list=PLLnpHn493BHGhoGAb2PRKzv4Zw3QoatK-",
+  "imageUrl": "/images/resources/leveluptuts.jpg",
+  "rating": 0,
+  "categories": ["courses"],
+  "location": "YouTube",
+  "locationImgUrl": "/images/authors/youtube.png"
+},{
+  "slug": "java-script-air-web-components",
+  "title": "JavaScript Air Web Components",
+  "description": "There's been quite a bit of talk about the Web Components spec lately. As with anything new, there's been a lot of fear, uncertainty, and doubt (FUD) about Web Components. We're going to chat about some of their use cases, strengths, and weaknesses to give us all a better idea of this tech.",
+  "url": "http://audio.javascriptair.com/e/042-jsair-web-components-with-rob-dodson-tushar-mathur-and-monica-dinculescu/",
+  "imageUrl": "/images/resources/polymer.svg",
+  "rating": 0,
+  "categories": ["podcasts"],
+  "location": "JavaScript Air",
+  "locationImgUrl": "/images/authors/javascript-air.png"
+},{
+  "slug": "polymer-and-web-components-with-angular-2",
+  "title": "Polymer and Web Components with Angular 2",
+  "description": "115 AiA Polymer and Web Components with Angular 2 with Rob Dodson",
+  "url": "https://devchat.tv/adv-in-angular/115-aia-polymer-and-web-components-with-angular-2-with-rob-dodson",
+  "imageUrl": "/images/resources/polymer.svg",
+  "rating": 0,
+  "categories": ["podcasts"],
+  "location": "Adventures in Angular",
+  "locationImgUrl": "/images/authors/adventures-in-angular.png"
+},{
+  "slug": "shadow-dom-v-1-self-contained-web-components",
+  "title": "Shadow DOM v1: Self-Contained Web Components",
+  "description": "Shadow DOM fixes CSS and DOM. It introduces scoped styles to the web platform. Without tools or naming conventions, you can bundle CSS with markup, hide implementation details, and author self-contained components in vanilla JavaScript.",
+  "url": "https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom",
+  "imageUrl": "/images/resources/webcomponents.png",
+  "rating": 5,
+  "categories": ["articles"],
+  "location": "Web Fundamentals",
+  "locationImgUrl": "/images/authors/web-fundamentals.png"
+},{
+  "slug": "custom-elements-v-1-reusable-web-components",
+  "title": "Custom Elements v1: Reusable Web Components",
+  "description": "With Custom Elements, web developers can create new HTML tags, beef-up existing HTML tags, or extend the components other developers have authored.",
+  "url": "https://developers.google.com/web/fundamentals/getting-started/primers/customelements",
+  "imageUrl": "/images/resources/webcomponents.png",
+  "rating": 5,
+  "categories": ["articles"],
+  "location": "Web Fundamentals",
+  "locationImgUrl": "/images/authors/web-fundamentals.png"
+},{
+  "slug": "html-imports",
+  "title": "HTML Imports",
+  "description": "#include for the web",
+  "url": "https://www.html5rocks.com/en/tutorials/webcomponents/imports/",
+  "imageUrl": "/images/resources/webcomponents.png",
+  "rating": 5,
+  "categories": ["articles"],
+  "location": "HTML5 Rocks",
+  "locationImgUrl": "/images/authors/html5rocks.png"
 }]

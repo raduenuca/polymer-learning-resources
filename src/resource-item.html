@@ -45,13 +45,13 @@
                 font-weight: bold;
             }
 
-            .author {
+            .location {
                 font-size: 11px;
                 color: #000;
                 line-height: 5em;
             }
 
-            .author img {
+            .location img {
                 width: 30px;
                 height: 30px;
                 border-radius: 50% 50%;
@@ -95,16 +95,16 @@
 
         </style>
 
-        <div class="pic" style$="background-image: url([[item.imageUrl]]);"></div>
-        <h2 class="link">[[item.title]]</h2>
+        <div class="pic" style$="background-image: url([[resource.imageUrl]]);"></div>
+        <h2 class="link">[[resource.title]]</h2>
         <span class="rating">
-            <paper-rating rating="[[item.rating]]" disabled></paper-rating>
+            <paper-rating rating="[[resource.rating]]" disabled></paper-rating>
         </span>
 
-        <!--<div class="author">-->
-            <!--<img src="[[item.storeAvatarUrl]]">-->
-            <!--[[item.storeName]]-->
-        <!--</div>-->
+        <div class="location">
+            <img src="[[resource.locationImgUrl]]">
+            [[resource.location]]
+        </div>
 
     </template>
 
@@ -116,7 +116,7 @@
 
             properties: {
 
-                item: {
+                resource: {
                     type: Object
                 }
 

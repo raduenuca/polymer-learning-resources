@@ -45,9 +45,17 @@
         opacity: 1;
       }
 
+      p {
+        font-size: 13px;
+        font-weight: 300;
+        line-height: 20px;
+        color: #333;
+      }
+
     </style>
 
-    <div class="pic" style$="background-image: url([[item.imageUrl]]);"></div>
+    <div class="pic" style$="background-image: url([[resource.imageUrl]]);"></div>
+    <!--<div><p>[[resource.title]]</p></div>-->
 
   </template>
 
@@ -59,7 +67,7 @@
 
     properties: {
 
-      item: {
+      resource: {
         type: Object
       }
 

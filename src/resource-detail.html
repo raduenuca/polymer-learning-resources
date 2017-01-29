@@ -3,285 +3,299 @@
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-rating/paper-rating.html">
 <link rel="import" href="resource-simple-item.html">
 
 <dom-module id="resource-detail">
 
-  <template>
+    <template>
 
-    <style>
+        <style>
 
-      :host {
-        @apply(--layout-horizontal);
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      }
+            :host {
+                @apply(--layout-horizontal);
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            }
 
-      .items {
-        -webkit-flex: 1 1 35%;
-        flex: 1 1 35%;
-        width: 35%;
-        overflow-y: auto;
-        background-color: #f3f3f3;
-        padding-left: 10px;
-        padding-right: 10px;
-        box-sizing: border-box;
-      }
+            .items {
+                -webkit-flex: 1 1 35%;
+                flex: 1 1 35%;
+                width: 35%;
+                overflow-y: auto;
+                background-color: #f3f3f3;
+                padding-left: 10px;
+                padding-right: 10px;
+                box-sizing: border-box;
+            }
 
-      .itemsGrid {
-        @apply(--layout-horizontal);
-        @apply(--layout-wrap);
-        @apply(--layout-center-justified);
-        margin-top: 10px;
-      }
+            .itemsGrid {
+                @apply(--layout-horizontal);
+                @apply(--layout-wrap);
+                @apply(--layout-center-justified);
+                margin-top: 10px;
+            }
 
-      .itemsGrid > .item {
-        -webkit-flex: 1 calc(50% - 20px);
-        flex: 1 calc(50% - 20px);
-        max-width: calc(50% - 20px);
-        height: 15vmax;
-        min-height: 100px;
-        margin: 10px;
-        text-decoration: none;
-        background-color: white;
-      }
+            .itemsGrid > .item {
+                -webkit-flex: 1 calc(50% - 20px);
+                flex: 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+                height: 15vmax;
+                min-height: 100px;
+                margin: 10px;
+                text-decoration: none;
+                background-color: white;
+            }
 
-      .detailSection {
-        @apply(--layout);
-        width: 65%;
-        -webkit-flex: 1 1 65%;
-        flex: 1 1 65%;
-      }
+            .detailSection {
+                @apply(--layout);
+                width: 65%;
+                -webkit-flex: 1 1 65%;
+                flex: 1 1 65%;
+            }
 
-      .detailGrid {
-        width: 100%;
-        padding: 128px 0 64px;
-        @apply(--layout-horizontal);
-        @apply(--layout-wrap);
-        @apply(--layout-center-justified);
-      }
+            .detailGrid {
+                width: 100%;
+                padding: 128px 0 64px;
+                @apply(--layout-horizontal);
+                @apply(--layout-wrap);
+                @apply(--layout-center-justified);
+            }
 
-      .image {
-        width: 40vmin;
-        position: relative;
-      }
+            .image {
+                width: 40vmin;
+                position: relative;
+            }
 
-      .image img {
-        max-height: 100%;
-        max-width: 100%;
-        width: auto;
-      }
+            .image img {
+                max-height: 100%;
+                max-width: 100%;
+                width: auto;
+            }
 
-      .content {
-        width: 400px;
-      }
+            .content {
+                width: 450px;
+            }
 
-      .store {
-        margin-top: 30px;
-        border-top: 1px solid #ddd;
-      }
+            .location {
+                margin-top: 30px;
+                border-top: 1px solid #ddd;
+            }
 
-      .store h3 {
-        font-size: 13px;
-        font-weight: 500;
-      }
+            .location h3 {
+                font-size: 13px;
+                font-weight: 500;
+            }
 
-      .info {
-        color: rgba(255, 223, 223, 1);
-        position: absolute;
-        top: 0;
-        right: 0;
-      }
+            .info {
+                color: rgba(255, 223, 223, 1);
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
 
-      .quantitySelector {
-        position: relative;
-        display: inline-block;
-      }
+            .quantitySelector {
+                position: relative;
+                display: inline-block;
+            }
 
-      .quantitySelector::after {
-        display: block;
-        content: '\25BC';
-        position: absolute;
-        top: calc(50% - 8px);
-        right: 10px;
-        speak: none;
-        -webkit-transform: scaleY(.6) scaleX(1);
-        transform: scaleY(.6) scaleX(1);
-        color: #666;
-        pointer-events: none;
-      }
+            .quantitySelector::after {
+                display: block;
+                content: '\25BC';
+                position: absolute;
+                top: calc(50% - 8px);
+                right: 10px;
+                speak: none;
+                -webkit-transform: scaleY(.6) scaleX(1);
+                transform: scaleY(.6) scaleX(1);
+                color: #666;
+                pointer-events: none;
+            }
 
-      .quantitySelector select {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        padding: 10px 20px;
-        border: 1px solid rgba(0, 0, 0, .2);
-        background-color: white;
-        border-radius: 0;
-        position: relative;
-        min-width: 180px;
-        font-size: 20px;
-      }
+            .quantitySelector select {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                padding: 10px 20px;
+                border: 1px solid rgba(0, 0, 0, .2);
+                background-color: white;
+                border-radius: 0;
+                position: relative;
+                min-width: 180px;
+                font-size: 20px;
+            }
 
-      .quantitySelector select:focus {
-        outline: 0;
-        border-color: rgba(0, 0, 0, .5);
-      }
+            .quantitySelector select:focus {
+                outline: 0;
+                border-color: rgba(0, 0, 0, .5);
+            }
 
-      h1 {
-        font-family: 'Abril Fatface', cursive;
-        font-size: 2.5em;
-        font-weight: 300;
-        color: #0a3142;
-      }
+            h1 {
+                /*font-family: 'Abril Fatface', cursive;*/
+                font-size: 2.5em;
+                font-weight: 300;
+                color: #0a3142;
+            }
 
-      p {
-        font-size: 13px;
-        font-weight: 300;
-        line-height: 20px;
-        color: #333;
-      }
+            p {
+                font-size: 13px;
+                font-weight: 300;
+                line-height: 20px;
+                color: #333;
+            }
 
-      paper-fab {
-        --paper-fab-background: #31f0ef;
-        --paper-fab-keyboard-focus-background: #21e0df;
-        color: #0a3142;
-        display: -webkit-inline-flex;
-        display: inline-flex;
-        margin-left: 20px;
-        --paper-fab-iron-icon: {
-          width: 20px;
-          height: 20px;
-        };
-      }
+            paper-fab {
+                --paper-fab-background: #31f0ef;
+                --paper-fab-keyboard-focus-background: #21e0df;
+                color: #0a3142;
+                display: -webkit-inline-flex;
+                display: inline-flex;
+                margin-left: 20px;
+                --paper-fab-iron-icon: {
+                    width: 20px;
+                    height: 20px;
+                };
+            }
 
-      /**
-       * Desktop small, tablet
-       */
-      @media (max-width: 1200px) {
-        :host {
-          @apply(--layout-center);
-          @apply(--layout-vertical-reverse);
-        }
+            a paper-icon-button,
+            a:active paper-icon-button,
+            a:visited paper-icon-button {
+                color: #000000;
+            }
 
-        .items {
-          @apply(--layout-flex-none);
-          width: 100vw;
-        }
+            /**
+             * Desktop small, tablet
+             */
+            @media (max-width: 1200px) {
+                :host {
+                    @apply(--layout-center);
+                    @apply(--layout-vertical-reverse);
+                }
 
-        .itemsGrid > .item {
-          -webkit-flex: 1 calc(33% - 20px);
-          flex: 1 calc(33% - 20px);
-          max-width: calc(33% - 20px);
-          height: 40vmin;
-        }
+                .items {
+                    @apply(--layout-flex-none);
+                    width: 100vw;
+                }
 
-        .detailSection {
-          @apply(--layout-flex-none);
-          width: 90vw;
-          margin-left: 10px;
-          margin-right: 10px;
-        }
-      }
+                .itemsGrid > .item {
+                    -webkit-flex: 1 calc(33% - 20px);
+                    flex: 1 calc(33% - 20px);
+                    max-width: calc(33% - 20px);
+                    height: 40vmin;
+                }
 
-      /**
-       * Phone
-       */
-      @media (max-width: 400px) {
-        .detailSection {
-          @apply(--layout-flex-none);
-        }
+                .detailSection {
+                    @apply(--layout-flex-none);
+                    width: 90vw;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                }
+            }
 
-        .itemsGrid > .item {
-          -webkit-flex: 1 calc(50% - 20px);
-          flex: 1 calc(50% - 20px);
-          max-width: calc(50% - 20px);
-        }
+            /**
+             * Phone
+             */
+            @media (max-width: 400px) {
+                .detailSection {
+                    @apply(--layout-flex-none);
+                }
 
-        h1 {
-          text-align: center;
-        }
+                .itemsGrid > .item {
+                    -webkit-flex: 1 calc(50% - 20px);
+                    flex: 1 calc(50% - 20px);
+                    max-width: calc(50% - 20px);
+                }
 
-        .detailGrid {
-          width: 100%;
-          padding: 32px 0 64px;
-        }
-      }
+                h1 {
+                    text-align: center;
+                }
 
-    </style>
+                .detailGrid {
+                    width: 100%;
+                    padding: 32px 0 64px;
+                }
+            }
 
-    <div class="items">
-      <div class="itemsGrid">
-        <template is="dom-repeat" items="[[relatedItems]]">
-          <a href$="#[[section]]/[[item.id]]" title$="[[item.title]]" class="item">
-            <resource-simple-item item="[[item]]"></resource-simple-item>
-          </a>
+        </style>
+
+        <template is="dom-if" if="[[_hasRelatedResources(relatedResources)]]">
+            <div class="items">
+                <div class="itemsGrid">
+                    <template is="dom-repeat" items="[[relatedResources]]" as="resource" filter="_currentItem">
+                        <a href$="/[[category]]/[[resource.slug]]" title$="[[resource.title]]" class="item">
+                            <resource-simple-item resource="[[resource]]"></resource-simple-item>
+                        </a>
+                    </template>
+                </div>
+            </div>
         </template>
-      </div>
-    </div>
 
-    <div class="detailSection">
-      <div class="detailGrid">
-        <div class="image">
-          <img id="img">
-          <div class="info">
-            <paper-icon-button icon="info-outline" aria-label="More information about the item"></paper-icon-button>
-          </div>
+        <div class="detailSection">
+            <div class="detailGrid">
+                <div class="image">
+                    <img id="img">
+                    <!--<div class="info">-->
+                        <!--<paper-icon-button icon="info-outline"-->
+                                           <!--aria-label="More information about the resource"></paper-icon-button>-->
+                    <!--</div>-->
+                </div>
+
+                <div class="content">
+                    <h1>
+                        [[resource.title]]
+                        <a href="[[resource.url]]" target="_blank" tabindex="-1" title="Navigate to the resource" aria-label="Navigate to the resource">
+                            <paper-icon-button icon="launch"></paper-icon-button>
+                        </a>
+                    </h1>
+                    <p><paper-rating rating="[[resource.rating]]" disabled></paper-rating></p>
+                    <p>[[resource.description]]</p>
+                    <div class="location">
+                        <h3>Disclaimer</h3>
+                        <p>The rating of this resource is solely my opinion and it is based on the extra knowledge I got from it, taken into the consideration resource quality and price.</p>
+                        <p>No rating means I haven't got time go though it but I consider doing so.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="content">
-          <h1>[[item.title]]</h1>
-          <p>[[item.description]]</p>
-          <div class="quantitySelector">
-            <select aria-label="Change number of items">
-              <option value="1">Quantity 1</option>
-              <option value="2">Quantity 2</option>
-              <option value="3">Quantity 3</option>
-              <option value="4">Quantity 4</option>
-              <option value="5">Quantity 5</option>
-            </select>
-          </div>
-          <paper-fab mini icon="add-shopping-cart" aria-label="add to the shopping cart"></paper-fab>
-          <div class="store">
-            <h3>[[item.storeName]]</h3>
-            <p>[[item.storeDescription]]</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    </template>
 
-  </template>
+    <script>
 
-  <script>
+        Polymer({
 
-  Polymer({
+            is: 'resource-detail',
 
-    is: 'resource-detail',
+            properties: {
 
-    properties: {
+                resource: {
+                    type: Object,
+                    observer: '_itemChanged'
+                },
 
-      item: {
-        type: Object,
-        observer: '_itemChanged'
-      },
+                category: {
+                    type: String
+                },
 
-      section: {
-        type: String
-      },
+                relatedResources: {
+                    type: Array
+                }
 
-      relatedItems: {
-        type: Array
-      }
+            },
 
-    },
+            _itemChanged: function (resource) {
+                this.$.img.src = '';
+                this.$.img.src = resource.imageUrl;
+            },
 
-    _itemChanged: function(item) {
-      this.$.img.src = '';
-      this.$.img.src = item.imageUrl;
-    }
+            _currentItem: function (item) {
+                return item.slug !== this.resource.slug;
+            },
 
-  });
+            _hasRelatedResources: function(relatedResources){
+                return relatedResources.length > 1;
+            }
+        });
 
-  </script>
+    </script>
 
 </dom-module>

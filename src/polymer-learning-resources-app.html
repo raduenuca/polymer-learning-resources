@@ -6,13 +6,18 @@
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icons/social-icons.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/app-layout/app-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="../bower_components/paper-badge/paper-badge.html">
+<link rel="import" href="../bower_components/lodash-element/lodash.js.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="resource-list.html">
 <link rel="import" href="resource-detail.html">
 
-<dom-module id="test-app">
+<dom-module id="polymer-learning-resources-app">
     <template>
         <style>
 
@@ -34,7 +39,6 @@
             }
 
             app-drawer {
-                top: 50px;
                 --app-drawer-content-container: {
                     background-color: #f3f3f3;
                 };
@@ -52,7 +56,7 @@
             .navItem {
                 @apply(--layout-self-start);
                 margin-top: 13px;
-                width: 88px;
+                width: 44px;
             }
 
             .spacer {
@@ -62,8 +66,8 @@
             }
 
             .logo {
-                width: 120px;
-                height: 40px;
+                width: 100px;
+                height: 60px;
                 background-size: 100% 100%;
             }
 
@@ -77,6 +81,15 @@
 
             :host([page=detail]) #mainToolbar {
                 height: 64px;
+            }
+
+            :host([page=detail]) .logo {
+                width: 69px;
+                height: 37px;
+            }
+
+            :host([page=detail]) span[main-title] {
+                font-size: 25px;
             }
 
             :host([page=detail]) paper-tabs {
@@ -155,13 +168,31 @@
                 color: #0a3142;
             }
 
+            span[main-title] {
+                font-size: 60px;
+                font-weight: 800;
+                color: #444;
+            }
+
+            .badge-container {
+                display: inline-block;
+                margin-left: 30px;
+                margin-right: 30px;
+            }
+
+            /* Need to position the badge to look like a text superscript */
+            .badge-container > paper-badge {
+                --paper-badge-margin-left: 20px;
+                --paper-badge-margin-bottom: 0px;
+            }
+
             /**
              * Desktop small, tablet
              */
             @media (max-width: 1200px) {
                 .logo {
-                    width: 89px;
-                    height: 17px;
+                    width: 69px;
+                    height: 37px;
                 }
 
                 #mainToolbar {
@@ -171,12 +202,21 @@
                 resource-detail {
                     height: auto;
                 }
+
+                span[main-title] {
+                    font-size: 25px;
+                }
             }
 
             /**
              * Phone
              */
-            @media (max-width: 400px) {
+            @media (max-width: 450px) {
+                :host([page=detail]) .logo, .logo {
+                    width: 49px;
+                    height: 17px;
+                }
+
                 .leftItem [icon=menu] {
                     display: block;
                 }
@@ -184,119 +224,134 @@
                 paper-tabs {
                     display: none;
                 }
+
+                :host([page=detail]) span[main-title], span[main-title] {
+                    font-size: 14px;
+                    white-space: pre-wrap;
+                }
             }
 
         </style>
 
-        <app-location route="{{route}}" use-hash-as-path></app-location>
+        <app-location route="{{route}}"></app-location>
         <app-route
                 route="{{route}}"
-                pattern=":section"
-                data="{{sectionData}}"
+                pattern="/:category"
+                data="{{categoryData}}"
                 tail="{{subRoute}}"></app-route>
         <app-route
                 route="{{subRoute}}"
-                pattern="/:id"
-                data="{{idData}}"
+                pattern="/:slug"
+                data="{{resourceData}}"
                 active="{{onDetailPage}}"></app-route>
 
-        <iron-media-query query="max-width: 400px" query-matches="{{smallScreen}}"></iron-media-query>
+        <iron-media-query query="max-width: 450px" query-matches="{{smallScreen}}"></iron-media-query>
 
-        <app-header-layout fullbleed>
-            <app-header id="header" effects="waterfall" fixed shadow condenses="[[!smallScreen]]">
-                <app-toolbar id="mainToolbar">
-                    <div class="navItem leftItem">
-                        <a href="#[[sectionData.section]]" tabindex="-1">
-                            <paper-icon-button icon="arrow-back" alt="Back to the home"></paper-icon-button>
-                        </a>
-                    </div>
-                    <div class="spacer">
-                        <img src="//app-layout-assets.appspot.com/assets/shrine/shrine_logo.svg" class="logo"
-                             alt="SHRINE">
-                    </div>
-                    <div class="navItem">
-                        <paper-icon-button icon="shopping-cart" aria-label="Shopping cart"></paper-icon-button>
-                        <paper-icon-button icon="more-vert" aria-label="More options"></paper-icon-button>
-                    </div>
-                </app-toolbar>
-                <template is="dom-if" if="[[_shouldShowTabs(onDetailPage, smallScreen)]]">
-                    <paper-tabs selected="[[selectedTab]]" scrollable
-                                sticky$="[[_shouldShowTabs(onDetailPage, smallScreen)]]">
-                        <template is="dom-repeat" items="[[sections]]" as="section">
-                            <paper-tab>
-                                <a href="#[[section]]">[[section]]</a>
-                            </paper-tab>
+        <iron-ajax url="/data/resources.json" auto last-response="{{resources}}"></iron-ajax>
+
+        <app-drawer-layout drawer-width="288px" force-narrow>
+            <app-drawer id="drawer" swipe-open>
+                <template is="dom-if" if="[[smallScreen]]">
+                    <app-toolbar class="profileBar">
+                        <img class="profilePic"
+                             src="https://s.gravatar.com/avatar/5bde3a9f072f038711aab04c1ea5b924?s=80" width="30"
+                             height="30">
+                        <div class="profileName">Radu Enuca</div>
+                        <paper-icon-button icon="social:public" aria-label="Github"></paper-icon-button>
+                    </app-toolbar>
+                    <div class="list">
+                        <template is="dom-repeat" items="[[categories]]" as="category" initial-count="1">
+                            <a href="/[[category]]"
+                               class$="badge-container [[_getSectionClass(index, selectedTab)]]">
+                                <span id$="d-[[category]]">[[category]]</span>
+                                <paper-badge for$="d-[[category]]"
+                                             label="[[_resourcesPerCategory(resources, category)]]">
+                                </paper-badge>
+                            </a>
                         </template>
-                    </paper-tabs>
+                    </div>
                 </template>
-            </app-header>
+            </app-drawer>
 
-            <app-drawer-layout drawer-width="288px">
-                <template is="dom-if" if="[[_equal(route.path, 'official')]]">
-                    <app-drawer id="drawer" swipe-open>
-                        <div class="list">
-                            <template is="dom-repeat" items="[[sections]]" as="section" initial-count="1">
-                                <a href="#[[section]]" class$="[[_getSectionClass(index, selectedTab)]]">[[section]]</a>
-                            </template>
+            <app-header-layout>
+                <app-header id="header" effects="waterfall" fixed="[[smallScreen]]" condenses="[[!smallScreen]]"
+                            reveals="[[!smallScreen]]">
+                    <app-toolbar id="mainToolbar">
+                        <div class="navItem leftItem">
+                            <paper-icon-button icon="menu" drawer-toggle
+                                               alt="Toogle navigation menu"></paper-icon-button>
+                            <a href="/[[categoryData.category]]" tabindex="-1">
+                                <paper-icon-button icon="arrow-back" alt="Back to the home"></paper-icon-button>
+                            </a>
                         </div>
-                    </app-drawer>
-                </template>
+                        <div class="spacer">
+                            <img src="/images/logo.svg"
+                                 class="logo"
+                                 alt="Polymer">
+                            <span main-title>Polymer Learning Resources</span>
+                        </div>
+                        <div class="navItem">
+                            <paper-icon-button icon="more-vert" aria-label="More options"></paper-icon-button>
+                        </div>
+                    </app-toolbar>
+                    <template is="dom-if" if="[[_shouldShowTabs(onDetailPage, smallScreen)]]">
+                        <paper-tabs selected="[[selectedTab]]" scrollable
+                                    sticky$="[[_shouldShowTabs(onDetailPage, smallScreen)]]">
+                            <template is="dom-repeat" items="[[categories]]" as="category">
+                                <paper-tab>
+                                    <a href="/[[category]]" class="badge-container">
+                                        <span id$="[[category]]">[[category]]</span>
+                                        <paper-badge for$="[[category]]"
+                                                     label="[[_resourcesPerCategory(resources, category)]]">
+                                        </paper-badge>
+                                    </a>
+                                    <paper-ripple></paper-ripple>
+                                </paper-tab>
+                            </template>
+                        </paper-tabs>
+                    </template>
+                </app-header>
+
                 <iron-pages selected="[[page]]" attr-for-selected="name">
                     <!-- detail of item -->
                     <template is="dom-if" if="[[_equal(page, 'detail')]]">
                         <resource-detail
                                 name="detail"
-                                section="[[sectionData.section]]"
-                                related-items="[[items]]"
-                                item="[[_getDetailItem(items, idData.id)]]">
+                                category="[[categoryData.category]]"
+                                related-resources="[[_getResourcesByCategory(resources, categoryData.category)]]"
+                                resource="[[_getResourceDetail(resources, resourceData.slug)]]">
                         </resource-detail>
                     </template>
                     <!-- list of items -->
                     <template is="dom-if" if="[[_equal(page, 'list')]]">
                         <resource-list
                                 name="list"
-                                section="[[sectionData.section]]"
-                                items="[[_getItemsCopy(items, sectionData.section)]]"
-                                featured-item="[[_getFeaturedItem(featuredItems, sectionData.section)]]">
+                                category="[[categoryData.category]]"
+                                resources="[[_getResourcesByCategory(resources, categoryData.category)]]">
                         </resource-list>
                     </template>
                 </iron-pages>
-            </app-drawer-layout>
-        </app-header-layout>
 
+            </app-header-layout>
+        </app-drawer-layout>
     </template>
     <script>
         Polymer({
 
-            is: 'test-app',
+            is: 'polymer-learning-resources-app',
             properties: {
-
-                sections: {
-                    type: Array,
-                    value: function () {
-                        return [
-                            'official',
-                            'courses',
-                            'books',
-                            'articles',
-                            'tutorials',
-                            'food',
-                            'travel'
-                        ];
-                    }
-                },
-
                 selectedTab: {
                     type: Number,
-                    computed: '_computeSelectedTab(sections, sectionData.section)'
+                    computed: '_computeSelectedTab(categories, categoryData.category)'
                 },
 
-                items: {
+                resources: {
                     type: Array
                 },
 
-                featuredItems: {
-                    type: Array
+                categories: {
+                    type: Array,
+                    computed: '_computeCategories(resources)'
                 },
 
                 page: {
@@ -309,48 +364,56 @@
 
                 subRoute: Object,
 
-                sectionData: Object,
+                categoryData: Object,
 
-                idData: Object,
+                resourceData: Object,
 
                 onDetailPage: Boolean
             },
 
             observers: [
-                '_hashDidChange(route.path, items, featuredItems)'
+                '_pathChanged(route.path, resources)'
             ],
 
-            ready: function () {
+            attached: function () {
                 this.async(function () {
-                    if (!this.route.path) {
-                        this.set('route.path', 'official');
+                    if (this.route.path === "/") {
+                        this.set('route.path', '/documentation');
                     }
                 });
             },
 
-            _computeSelectedTab: function (sections, section) {
-                return sections.indexOf(section);
+            _computeSelectedTab: function (categories, category) {
+                return categories.indexOf(category);
             },
 
-            _getItemsCopy: function (items) {
-                return items.slice();
+            _getResourcesByCategory: function (resources, category) {
+                return _.filter(resources, function (resource) {
+                    return resource.categories.indexOf(category) !== -1;
+                });
             },
 
-            _getFeaturedItem: function (featuredItems, section) {
-                return featuredItems.filter(function (item) {
-                    return item.category.toLowerCase() === section;
-                }).pop();
+            _resourcesPerCategory: function (resources, category) {
+                return _.filter(_.flatten(_.map(resources, 'categories')), function (item) {
+                    return item === category;
+                }).length;
             },
 
-            _getDetailItem: function (items, id) {
-                return items[id];
+            _computeCategories: function (resources) {
+                return _.uniq(_.flatten(_.map(resources, 'categories')));
+            },
+
+            _getResourceDetail: function (resources, slug) {
+                return _.find(resources, function (resource) {
+                    return resource.slug === slug;
+                });
             },
 
             _computePage: function (onDetailPage) {
                 return onDetailPage ? 'detail' : 'list';
             },
 
-            _hashDidChange: function () {
+            _pathChanged: function () {
                 // TODO(blasten) Polymer.AppScrollEffects(0);
                 this.$.header._scrollTop = 0;
                 this.$.header.resetLayout();
@@ -368,7 +431,7 @@
             },
 
             _shouldShowTabs: function (onDetailPage, smallScreen) {
-                return true; //!onDetailPage && !smallScreen;
+                return !onDetailPage && !smallScreen;
             }
 
         });

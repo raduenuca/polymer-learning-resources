@@ -1,0 +1,23 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/polymer-learning-resources-app.html",
+  "fragments": [
+    "src/resource-detail.html",
+    "src/resource-item.html",
+    "src/resource-list.html",
+    "src/resource-simple-item.html"
+  ],
+  "sources": [
+    "src/**/*",
+    "images/**/*",
+    "data/**/*",
+    "manifest.json",
+    "browserconfig.xml",
+    "bower.json",
+    "favicon.ico",
+    "*.png"
+  ],
+  "includeDependencies": [
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ]
+}
