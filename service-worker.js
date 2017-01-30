@@ -29,7 +29,7 @@
 
 
 /* eslint-disable quotes, comma-spacing */
-var PrecacheConfig = [["/index.html","259b0d1fe0f3d4658a22f246b37ba7dc"],["/src/polymer-learning-resources-app.html","447dd65ea58c5833dfa40597c0e01447"],["/src/resource-detail.html","12ea235da2ab1f1bdb814b8b07b9d318"],["/src/resource-item.html","d4621c1bc7e571066cf910ad2aeb2477"],["/src/resource-list.html","1611318a5ce86dad62b0e612f08f5beb"],["/src/resource-simple-item.html","683a582afe72b3b6075c76ec5c629915"]];
+var PrecacheConfig = [["/index.html","259b0d1fe0f3d4658a22f246b37ba7dc"],["/src/polymer-learning-resources-app.html","38cf619739ff37b8e16589194ff04c90"],["/src/resource-detail.html","602596c1774718a7be27c68fccdc04eb"],["/src/resource-item.html","d4621c1bc7e571066cf910ad2aeb2477"],["/src/resource-list.html","1611318a5ce86dad62b0e612f08f5beb"],["/src/resource-simple-item.html","683a582afe72b3b6075c76ec5c629915"]];
 /* eslint-enable quotes, comma-spacing */
 var CacheNamePrefix = 'sw-precache-v1--' + (self.registration ? self.registration.scope : '') + '-';
 
