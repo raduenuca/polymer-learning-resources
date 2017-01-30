@@ -1,5 +1,6 @@
 # \<polymer-learning-resources\>
-A collection of learning resources for Google Polymer
+A collection of learning resources for Google Polymer | [Demo](http://polymer-learning.raduenuca.com/)
+
 
 ## Install the Polymer-CLI
 
